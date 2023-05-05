@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -14,25 +14,28 @@ const LoginScreen = ({navigation}) => {
   const [text, setText] = useState('');
   const [password, setPassword] = useState('');
   const [condition, setCondition] = useState('');
+  const [showWrong, setShowWrong] = useState('');
 
   const handleTextChange = inputText => {
     setText(inputText);
-    console.log(text);
   };
 
   const handlePasswordChange = inputPassword => {
     setPassword(inputPassword);
-    console.log(password);
   };
 
-  const handleCondition = pressButoon => {
-    setCondition(pressButoon);
-    if ((text == 'admin123', password == '12345')) {
+  const handleLogin = () => {
+    if (text === 'admin123' && password === '123456') {
       navigation.navigate('Newfeed');
     } else {
-      console.log('Username or Password is incorrect!');
+      setShowWrong('Username or Password Incorrect!');
     }
   };
+
+  useEffect(() => {
+    console.log('username: ', text);
+    console.log('password: ', password);
+  });
 
   return (
     <View style={LoginStyle.container}>
@@ -68,13 +71,16 @@ const LoginScreen = ({navigation}) => {
                 color="#de7e3a"
                 style={LoginStyle.EyeIcon}
               />
+              {showWrong && (
+                <Text style={LoginStyle.wrongMessenger}>{showWrong}</Text>
+              )}
             </View>
             <View style={LoginStyle.loginButtonForm}>
               <TouchableOpacity>
                 <Text style={LoginStyle.forgotText}>Forgot Password</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={handleCondition}
+                onPress={handleLogin}
                 style={LoginStyle.loginButton}>
                 <Text style={LoginStyle.loginButtonText}>LOGIN</Text>
               </TouchableOpacity>

@@ -54,12 +54,17 @@ const LoginStyle = StyleSheet.create({
     color: '#de7e3a',
   },
   passwordTextInputStyle: {
-    padding: 2,
-    borderBottomWidth: 1,
+    padding: scale(2),
+    borderBottomWidth: scale(1),
     borderBottomColor: '#FFC085',
-    borderBottomEndRadius: 20,
+    borderBottomEndRadius: scale(20),
     color: '#FA8596',
-    paddingRight: 40,
+    paddingRight: scale(40),
+  },
+
+  wrongMessenger: {
+    paddingBottom: scale(10),
+    color: 'red',
   },
 
   EyeIcon: {
