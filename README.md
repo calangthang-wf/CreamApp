@@ -1,3 +1,3 @@
 # CreamApp
-React Native
+Social Network App 
 Coding by Calangthang
