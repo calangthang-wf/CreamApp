@@ -53,6 +53,29 @@ const RegisterScreen = ({navigation}) => {
               <Text style={RegisterStyle.questionText}>Login</Text>
             </TouchableOpacity>
           </View>
+          <View style={RegisterStyle.socialForm}>
+            <Text style={RegisterStyle.socialTitle}>--- OR ---</Text>
+            <View style={RegisterStyle.iconForm}>
+              <Icon
+                name="google"
+                size={scale(24)}
+                color="black"
+                style={RegisterStyle.socialIcon}
+              />
+              <Icon
+                name="facebook"
+                size={scale(24)}
+                color="black"
+                style={RegisterStyle.socialIcon}
+              />
+              <Icon
+                name="github"
+                size={scale(24)}
+                color="black"
+                style={RegisterStyle.socialIcon}
+              />
+            </View>
+          </View>
         </View>
       </ImageBackground>
     </View>

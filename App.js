@@ -7,8 +7,6 @@ import NewfeedScreen from './src/newfeed/newfeed';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-
-
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -28,6 +26,11 @@ const App = () => {
         <Stack.Screen
           name="Newfeed"
           component={NewfeedScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

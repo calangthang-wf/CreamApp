@@ -69,36 +69,37 @@ const LoginStyle = StyleSheet.create({
 
   EyeIcon: {
     position: 'absolute',
-    right: 10,
-    paddingTop: 75,
+    right: scale(10),
     justifyContent: 'center',
+    position: 'absolute',
+    bottom: 2,
   },
 
   forgotText: {
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingTop: scale(20),
+    paddingBottom: scale(30),
     color: '#de7e3a',
   },
 
   RegisterForm: {
-    paddingTop: 25,
+    paddingTop: scale(25),
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
   RegisterText: {
     color: '#de7e3a',
-    paddingRight: 3,
+    paddingRight: scale(3),
   },
   RegisterMember: {color: '#FA8596'},
 
   loginButtonForm: {
-    paddingTop: 5,
+    paddingTop: scale(5),
   },
   loginButton: {
     alignItems: 'center',
-    padding: 16,
-    borderRadius: 20,
+    padding: scale(16),
+    borderRadius: scale(20),
     backgroundColor: '#ffca57',
   },
   loginButtonText: {
@@ -106,7 +107,7 @@ const LoginStyle = StyleSheet.create({
   },
 
   socialLoginSection: {
-    paddingTop: 50,
+    paddingTop: scale(50),
     alignItems: 'center',
   },
 });

@@ -132,6 +132,22 @@ const RegisterStyle = StyleSheet.create({
     paddingRight: 20,
     color: 'blue',
   },
+
+  socialForm: {
+    paddingTop: scale(20),
+    alignItems: 'center',
+  },
+  socialTitle: {
+    color: '#de7e3a',
+    fontSize: scale(18),
+  },
+  iconForm: {
+    flexDirection: 'row',
+    paddingTop: scale(10),
+  },
+  socialIcon: {
+    paddingHorizontal: scale(10),
+  },
 });
 
 export default RegisterStyle;

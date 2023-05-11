@@ -6,6 +6,7 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 import LoginStyle from './LoginStyle';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,7 +15,9 @@ const LoginScreen = ({navigation}) => {
   const [text, setText] = useState('');
   const [password, setPassword] = useState('');
   const [condition, setCondition] = useState('');
-  const [showWrong, setShowWrong] = useState('');
+  const [showWrongUsername, setShowWrongUsername] = useState('');
+  const [showWrongPassword, setShowWrongPassword] = useState('');
+  const [hidePassword, setHidePassword] = useState(true);
 
   const handleTextChange = inputText => {
     setText(inputText);
@@ -24,18 +27,39 @@ const LoginScreen = ({navigation}) => {
     setPassword(inputPassword);
   };
 
-  const handleLogin = () => {
-    if (text === 'admin123' && password === '123456') {
-      navigation.navigate('Newfeed');
+  const handlePassword = () => {
+    navigation.navigate('ForgotPassword');
+  };
+
+  const usernameLogin = () => {
+    setShowWrongUsername('Username Incorrect!');
+  };
+  const passwordLogin = () => {
+    setShowWrongPassword('Password Incorrect!');
+  };
+
+  const loginOnpress = () => {
+    if (text !== 'admin123') {
+      usernameLogin();
+    } else if (password !== '123456') {
+      passwordLogin();
     } else {
-      setShowWrong('Username or Password Incorrect!');
+      navigation.navigate('Newfeed');
     }
+  };
+
+  const registerButton = () => {
+    navigation.navigate('Register');
   };
 
   useEffect(() => {
     console.log('username: ', text);
     console.log('password: ', password);
   });
+
+  const togglePasswordVisibility = () => {
+    setHidePassword(!hidePassword);
+  };
 
   return (
     <View style={LoginStyle.container}>
@@ -57,30 +81,37 @@ const LoginScreen = ({navigation}) => {
                 value={text}
                 style={LoginStyle.usernameTextInputStyle}></TextInput>
             </View>
+            {showWrongUsername && (
+              <Text style={LoginStyle.wrongMessenger}>{showWrongUsername}</Text>
+            )}
 
             <View style={LoginStyle.passwordForm}>
               <Text style={LoginStyle.passwordTextStyle}>Password</Text>
               <TextInput
                 onChangeText={handlePasswordChange}
                 value={password}
-                secureTextEntry={true}
+                secureTextEntry={hidePassword}
                 style={LoginStyle.passwordTextInputStyle}></TextInput>
-              <Icon
-                name="eye"
-                size={24}
-                color="#de7e3a"
+              <TouchableOpacity
                 style={LoginStyle.EyeIcon}
-              />
-              {showWrong && (
-                <Text style={LoginStyle.wrongMessenger}>{showWrong}</Text>
-              )}
+                onPress={togglePasswordVisibility}>
+                <Icon
+                  name="eye"
+                  size={24}
+                  color="#de7e3a"
+                  style={LoginStyle.EyeIcon}
+                />
+              </TouchableOpacity>
             </View>
+            {showWrongPassword && (
+              <Text style={LoginStyle.wrongMessenger}>{showWrongPassword}</Text>
+            )}
             <View style={LoginStyle.loginButtonForm}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handlePassword}>
                 <Text style={LoginStyle.forgotText}>Forgot Password</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={handleLogin}
+                onPress={loginOnpress}
                 style={LoginStyle.loginButton}>
                 <Text style={LoginStyle.loginButtonText}>LOGIN</Text>
               </TouchableOpacity>
@@ -88,7 +119,7 @@ const LoginScreen = ({navigation}) => {
           </View>
           <View style={LoginStyle.RegisterForm}>
             <Text style={LoginStyle.RegisterText}>NOT A MEMBER? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={registerButton}>
               <Text style={LoginStyle.RegisterMember}>JOIN A MEMBER</Text>
             </TouchableOpacity>
           </View>

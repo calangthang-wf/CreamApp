@@ -9,96 +9,82 @@ const ForgotStyle = StyleSheet.create({
 
   background: {
     flex: 1,
-    padding: 25,
+    padding: scale(25),
   },
 
   titleForm: {
-    paddingTop: 60,
+    paddingTop: scale(100),
     alignItems: 'center',
   },
   title: {
     color: '#de7e3a',
-    fontSize: 18,
+    fontSize: scale(18),
   },
 
-  mailForm: {
-    paddingTop: 60,
+  passwordForm: {
+    paddingTop: scale(30),
   },
-  mailTitle: {
+  passwordTitle: {
     color: '#de7e3a',
-    fontSize: 18,
+    fontSize: scale(18),
   },
-  mailInput: {
-    borderBottomWidth: 1,
-    paddingTop: 5,
+  passwordInput: {
+    borderBottomWidth: scale(1),
+    paddingTop: scale(5),
     borderColor: '#de7e3a',
   },
 
   buttonForm: {
-    paddingTop: 20,
+    paddingTop: scale(20),
   },
   buttonBack: {
     alignItems: 'center',
   },
   buttonBackText: {
     color: '#de7e3a',
-    fontSize: 18,
+    fontSize: scale(18),
   },
   buttonSendForm: {
-    paddingTop: 30,
+    paddingTop: scale(30),
   },
   buttonSend: {
     alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
+    borderWidth: scale(1),
+    borderRadius: scale(20),
     borderColor: '#de7e3a',
     backgroundColor: '#de7e3a',
-    padding: 10,
+    padding: scale(10),
   },
   buttonSendText: {
     color: '#fff',
-    fontSize: 18,
-  },
-
-  socialForm: {
-    paddingTop: 50,
-    alignItems: 'center',
-  },
-  socialTitle: {
-    color: '#de7e3a',
-    fontSize: 18,
-  },
-  iconForm: {
-    flexDirection: 'row',
-    paddingTop: 10,
-  },
-  socialIcon: {
-    paddingHorizontal: 10,
+    fontSize: scale(18),
   },
 
   questionForm: {
-    paddingTop: 50,
+    paddingTop: scale(20),
     alignItems: 'center',
   },
   questionTitle: {
     color: '#de7e3a',
-    fontSize: 18,
+    fontSize: scale(18),
   },
   signUpButtonForm: {
-    paddingTop: 20,
+    paddingTop: scale(20),
     alignItems: 'center',
   },
   signUpButton: {
     alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
+    borderWidth: scale(1),
+    borderRadius: scale(20),
     borderColor: '#de7e3a',
     backgroundColor: '#de7e3a',
-    padding: 10,
+    height: scale(50),
+    width: scale(120),
+    justifyContent: 'center',
   },
   signUpButtonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: scale(18),
   },
 });
 export default ForgotStyle;
