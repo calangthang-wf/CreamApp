@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import LoginStyle from './LoginStyle';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,9 +15,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const LoginScreen = ({navigation}) => {
   const [text, setText] = useState('');
   const [password, setPassword] = useState('');
-  const [condition, setCondition] = useState('');
-  const [showWrongUsername, setShowWrongUsername] = useState('');
-  const [showWrongPassword, setShowWrongPassword] = useState('');
+  const [showNullUsername, setNullUsername] = useState('');
+  const [showNullPassword, setNullPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
 
   const handleTextChange = inputText => {
@@ -32,17 +32,21 @@ const LoginScreen = ({navigation}) => {
   };
 
   const usernameLogin = () => {
-    setShowWrongUsername('Username Incorrect!');
+    setNullUsername('Username is empty!');
   };
   const passwordLogin = () => {
-    setShowWrongPassword('Password Incorrect!');
+    setNullPassword('Password is empty!');
   };
 
   const loginOnpress = () => {
-    if (text !== 'admin123') {
+    if (text === '') {
       usernameLogin();
-    } else if (password !== '123456') {
+    } else if (password === '') {
       passwordLogin();
+    } else if (text !== 'admin123') {
+      Alert.alert('Username is Incorrect!');
+    } else if (password !== '123456') {
+      Alert.alert('Password is Incorrect!');
     } else {
       navigation.navigate('Newfeed');
     }
@@ -81,8 +85,8 @@ const LoginScreen = ({navigation}) => {
                 value={text}
                 style={LoginStyle.usernameTextInputStyle}></TextInput>
             </View>
-            {showWrongUsername && (
-              <Text style={LoginStyle.wrongMessenger}>{showWrongUsername}</Text>
+            {showNullUsername && (
+              <Text style={LoginStyle.wrongMessenger}>{showNullUsername}</Text>
             )}
 
             <View style={LoginStyle.passwordForm}>
@@ -103,8 +107,8 @@ const LoginScreen = ({navigation}) => {
                 />
               </TouchableOpacity>
             </View>
-            {showWrongPassword && (
-              <Text style={LoginStyle.wrongMessenger}>{showWrongPassword}</Text>
+            {showNullPassword && (
+              <Text style={LoginStyle.wrongMessenger}>{showNullPassword}</Text>
             )}
             <View style={LoginStyle.loginButtonForm}>
               <TouchableOpacity onPress={handlePassword}>
